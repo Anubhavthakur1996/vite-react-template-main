@@ -1,0 +1,19 @@
+.footer-app {
+  background-image: url("../../../assets/foot.png");
+
+  background-color: rgba(33, 37, 41, .99);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: luminosity;
+  z-index: -1;
+  -webkit-animation-duration: 9s;
+  animation-duration: 9s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  animation-name: shapeMover;
+
+  color: white;
+}

@@ -1,0 +1,23 @@
+@import url("@fontsource-variable/quicksand");
+@import "tailwindcss";
+@import "./themes/dark.css";
+@import "./themes/light.css";
+
+body {
+  font-family: "Quicksand Variable", sans-serif;
+  transition: all 10s ease;
+}
+
+@theme {
+  --color-primary: #fff3b0;
+  --color-secondary: #fffbe3;
+  /* --color-primary: #9381ff;
+  --color-secondary: #b8b8ff; */
+  --color-buttons: #fbbc05;
+  --color-typography: #000;
+
+  --color-back-gray: #f0f2f5;
+  --color-back-yellow: #fdf5ed;
+
+  --font-quicksand: "Quicksand Variable", sans-serif;
+}

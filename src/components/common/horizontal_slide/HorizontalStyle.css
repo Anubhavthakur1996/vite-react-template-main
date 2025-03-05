@@ -1,0 +1,15 @@
+/* .slick-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua !important;
+  padding: 1vw !important;
+  border-radius: 2rem;
+  opacity: .8 !important;
+  text-align: center !important;
+}
+
+.slick-arrow::after {
+  position: absolute;
+  top: 10 !important;
+} */

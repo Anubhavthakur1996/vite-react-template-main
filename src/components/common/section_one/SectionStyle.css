@@ -1,0 +1,23 @@
+.section-one {
+  background-image: url("../../../assets/bn-img.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-mask {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 138, 169, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 1.25rem rgba(0, 138, 169, 0);
+  }
+}

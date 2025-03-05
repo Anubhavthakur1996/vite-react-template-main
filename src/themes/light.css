@@ -1,0 +1,8 @@
+html[data-theme="light"] {
+  --color-primary: #f6f8fa;
+  --color-secondary: #ffffff;
+  --color-buttons: #008aa9;
+  --color-typography: black;
+  --color-bg-gray: #f0f2f5;
+  --color-bg-yellow: #fdf5ed;
+}
