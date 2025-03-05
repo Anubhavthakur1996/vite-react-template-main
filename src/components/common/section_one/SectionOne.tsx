@@ -1,7 +1,9 @@
-import { JSX } from "react";
 import React from "react";
+import { JSX } from "react";
 import { FaComments } from "react-icons/fa6";
 import { Button } from "antd";
+import { useDispatch } from "react-redux";
+import { toggleModal } from "../../../redux/slices/baseSlice";
 import HoliadayForm from "../HolidayForm";
 import Iso from "../../../assets/iso.png";
 import Ratings from "../../../assets/ratings.png";
@@ -9,6 +11,9 @@ import Secure from "../../../assets/secure.png";
 import "./SectionStyle.css";
 
 const SectionOne: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch();
+  const showModal = () => dispatch(toggleModal());
+
   return (
     <>
       {/* mask */}
@@ -16,7 +21,7 @@ const SectionOne: React.FC = (): JSX.Element => {
       {/* container */}
       <div className="lg:h-[85vh] h-[150vh] w-screen py-15 lg:px-25 flex lg:flex-row flex-col justify-evenly items-center section-one">
         {/* Form Section */}
-        <HoliadayForm />
+        <HoliadayForm formTitle={null} />
         {/* Expert Section */}
         <div className="z-10 flex flex-col justify-center items-center lg:w-4/6 lg:py-40 py-5 lg:pl-20 px-5 text-center">
           <h1 className="!text-white lg:!text-5xl !text-2xl font-bold mb-6">
@@ -42,6 +47,7 @@ const SectionOne: React.FC = (): JSX.Element => {
             
           </Typography.Link> */}
           <Button
+            onClick={showModal}
             className="!bg-buttons !py-8 !px-10 !rounded-full hover:!border-4 hover:!bg-transparent active:!border-4 active:!bg-transparent"
             ghost
           >

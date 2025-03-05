@@ -1,6 +1,7 @@
 import { JSX, useState } from "react";
 import { Space, Switch } from "antd";
 import { SunOutlined, MoonOutlined } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import {
   userThemeSelector,
@@ -11,6 +12,8 @@ import Footer from "./footer/Footer";
 import Logo from "../../assets/logo.png";
 
 const Toggle: React.FC = (): JSX.Element => {
+  const { mobile } = useSelector((state) => state.base);
+
   const [theme, setTheme] = useState(localStorage.getItem("theme"));
 
   const nav = useNavigate();
@@ -54,10 +57,17 @@ const Toggle: React.FC = (): JSX.Element => {
         </div>
         {/* menu items */}
         <div
-          className={classNames(
-            scrollPosition > 0 ? "text-black" : "text-white",
-            "flex justify-center items-center mr-20 font-quicksand font-bold hover:cursor-pointer"
-          )}
+          className={
+            !mobile
+              ? classNames(
+                  scrollPosition > 0 ? "text-black" : "text-white",
+                  "flex justify-center items-center mr-20 font-quicksand font-bold hover:cursor-pointer"
+                )
+              : classNames(
+                  scrollPosition > 0 ? "text-black" : "text-white",
+                  "flex justify-center items-center mr-1 font-quicksand font-bold hover:cursor-pointer h-10vw text-sm"
+                )
+          }
         >
           <span
             className={location?.pathname === "/home" ? "text-buttons" : ""}
@@ -84,7 +94,7 @@ const Toggle: React.FC = (): JSX.Element => {
       </div>
 
       {/* theme switcher */}
-      <Space direction="vertical" className="fixed top-6 right-10 z-40">
+      <Space direction="vertical" className={!mobile ? "fixed top-6 right-10 z-40" : "fixed top-2 right-2 z-40"}>
         <Switch
           checkedChildren={<MoonOutlined />}
           unCheckedChildren={<SunOutlined />}

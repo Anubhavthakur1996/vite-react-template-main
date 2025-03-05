@@ -1,6 +1,7 @@
 import { JSX } from "react";
 import { Button, Carousel, Card, Col } from "antd";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 import "./HorizontalStyle.css";
 
 const { Meta } = Card;
@@ -32,6 +33,7 @@ const HorizontalSlide: React.FC<HorizontalSlideProps> = ({
   width,
 }): JSX.Element => {
   const nav = useNavigate();
+  const { mobile } = useSelector((state) => state.base);
 
   const goTO = () => {
     if (buttonData?.path) {
@@ -110,7 +112,7 @@ const HorizontalSlide: React.FC<HorizontalSlideProps> = ({
       {/* Cards */}
       <Carousel
         className="flex-wrap"
-        slidesToShow={slides ?? 4}
+        slidesToShow={(slides && !mobile) ? 4 : 1}
         arrows
         infinite
         autoplay
@@ -127,16 +129,22 @@ const HorizontalSlide: React.FC<HorizontalSlideProps> = ({
                     alt={card.title}
                     src={card.src}
                     style={
-                      (slides ?? 0) >= 4
-                        ? { height: "20vh" }
+                      !mobile
+                        ? (slides ?? 0) >= 4
+                          ? { height: "20vh" }
+                          : { height: "auto" }
                         : { height: "auto" }
                     }
                   />
                 }
-                style={{
-                  height: height ? height : "30vh",
-                  width: width ? width : "20vw",
-                }}
+                style={
+                  !mobile
+                    ? {
+                        height: height ? height : "30vh",
+                        width: width ? width : "20vw",
+                      }
+                    : { width: 350 }
+                }
                 className="m-10"
               >
                 {card?.title && (

@@ -1,6 +1,7 @@
 import { JSX } from "react";
 import PackagesUI from "./PackagesUI";
 import { topSelling } from "../../data/topSelling";
+import { customers } from "../../data/customers";
 
 const Packages: React.FC = (): JSX.Element => {
   const toggleRead = () => {
@@ -28,7 +29,14 @@ const Packages: React.FC = (): JSX.Element => {
     description: null,
   };
 
-  const props = { toggleRead, topSelling, titleData };
+  const titleDataTwo = {
+    partOne: { text: "Over 33k+", highlight: false },
+    partTwo: { text: "Happy Customers", highlight: true },
+    partThree: { text: "", highlight: false },
+    description: "Book Your Next Tour Plan with Us",
+  };
+
+  const props = { toggleRead, topSelling, titleData, titleDataTwo, customers };
 
   return <PackagesUI {...props} />;
 };

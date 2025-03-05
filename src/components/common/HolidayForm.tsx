@@ -13,6 +13,10 @@ type FieldType = {
   date?: string;
 };
 
+interface HolidayFormProps {
+  formTitle: string | null | undefined;
+}
+
 const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
   console.log("Success:", values);
 };
@@ -21,11 +25,11 @@ const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
 
-const HolidayForm: React.FC = (): JSX.Element => {
+const HolidayForm: React.FC<HolidayFormProps> = (formTitle): JSX.Element => {
   return (
     <Card className="z-10 justify-center items-center lg:w-2/6 w-3/4 bg-white px-10">
       <div className="flex justify-center items-center text-buttons font-bold mb-5 text-[1.25rem] font-quicksand">
-        Request A Travel Plan
+        {formTitle && "Request A Travel Plan"}
       </div>
       <Form
         name="travel_plan"

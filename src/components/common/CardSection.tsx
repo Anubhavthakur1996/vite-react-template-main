@@ -1,5 +1,6 @@
-import { Avatar, Button, Card, Carousel, List } from "antd";
+import { Avatar, Button, Card, Carousel, Col } from "antd";
 import { JSX, ReactNode } from "react";
+import { useSelector } from "react-redux";
 import {
   FaComments,
   FaBuilding,
@@ -21,6 +22,9 @@ type CardSectionProps = {
     | null
     | undefined;
   cardData: {
+    comment: ReactNode;
+    name: ReactNode;
+    city: ReactNode;
     address: ReactNode;
     duration: ReactNode;
     id: number;
@@ -36,6 +40,7 @@ const CardSection: React.FC<CardSectionProps> = ({
   cardData,
   type,
 }): JSX.Element => {
+  const { mobile } = useSelector((state) => state.base);
   if (type === 1) {
     return (
       <div className="flex justify-evenly items-center flex-col bg-back-yellow">
@@ -159,6 +164,15 @@ const CardSection: React.FC<CardSectionProps> = ({
                   );
                 }
 
+                if (key === "description") {
+                  return (
+                    <div key={index}>
+                      <br />
+                      <b className="text-[1rem]">{titleData[key]}</b>
+                    </div>
+                  );
+                }
+
                 return (
                   <span key={index}>
                     {typeof titleData[key] === "object"
@@ -171,19 +185,42 @@ const CardSection: React.FC<CardSectionProps> = ({
           </div>{" "}
         </div>
       )}
-      <Carousel infinite arrows className="!flex-wrap">
-        {cardData.map((item) => (
-          <Card key={item.id} style={{ width: 300 }}>
-            <Meta
-              avatar={
-                <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />
-              }
-              title="Card title"
-              description="This is the description"
-            />
-          </Card>
-        ))}
-      </Carousel>
+      <div className="flex justify-center items-center">
+        <Carousel
+          slidesToShow={!mobile ? 4 : 1}
+          infinite
+          autoplay
+          draggable
+          arrows
+          className="!flex-wrap flex font-quicksand w-[95vw]"
+        >
+          {cardData.map((item) => (
+            <Col key={item?.id} span={8}>
+              <Card
+                key={item.id}
+                style={!mobile ? { width: 300 } : { width: 350 }}
+                hoverable
+              >
+                {/* <Meta title={item?.comment} /> */}
+                <div className="text-base mb-10">{item?.comment}</div>
+                <Meta
+                  className="flex flex-col !justify-center items-center"
+                  avatar={<Avatar size={100} src={item.src} />}
+                />
+                {/* name and city */}
+                <div className="flex flex-col justify-evenly items-center font-quicksand mt-5">
+                  {/* name */}
+                  <div className="text-xl font-bold text-buttons">
+                    {item?.name}
+                  </div>
+                  {/* city */}
+                  <div className="text-base font-500">{item?.city}</div>
+                </div>
+              </Card>
+            </Col>
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 };

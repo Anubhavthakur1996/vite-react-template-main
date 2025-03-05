@@ -6,6 +6,24 @@
 body {
   font-family: "Quicksand Variable", sans-serif;
   transition: all 10s ease;
+
+  .slick-arrow {
+    background-color: #008aa9 !important;
+    width: 3rem !important;
+    height: 3rem !important;
+    opacity: 0.8 !important;
+    border-radius: 2rem;
+  }
+
+  .slick-next::after {
+    top: 1.2rem !important;
+    left: 1.1rem !important;
+  }
+
+  .slick-prev::after {
+    top: 1.2rem !important;
+    left: 1.1rem !important;
+  }
 }
 
 @theme {

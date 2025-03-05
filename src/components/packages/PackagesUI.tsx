@@ -8,12 +8,16 @@ interface PackagesUIProps {
   toggleRead: () => void;
   titleData: any; // Replace 'any' with the appropriate type
   topSelling: any; // Replace 'any' with the appropriate type
+  titleDataTwo: any; // Replace 'any' with the appropriate type
+  customers: any; // Replace 'any' with the appropriate type
 }
 
 const PackagesUI: React.FC<PackagesUIProps> = ({
   toggleRead,
   titleData,
   topSelling,
+  titleDataTwo,
+  customers,
 }): JSX.Element => {
   return (
     <>
@@ -264,6 +268,98 @@ const PackagesUI: React.FC<PackagesUIProps> = ({
 
       {/* Top Selling */}
       <CardSection titleData={titleData} cardData={topSelling} type={1} />
+
+      {/* Why US */}
+      <section>
+        <div className="flex justify-evenly items-center flex-col py-10">
+          {/* <!-- head_ti_whye --> */}
+          <div className="head_ti_why">
+            <h3 className="flex lg:flex-row flex-col lg:h-auto h-[20vh] text-center items-center text-typography font-quicksand lg:text-4xl text-2xl font-bold my-5">
+              why{" "}
+              <span className="text-buttons">&nbsp;himachalTourism.Info</span>
+            </h3>
+          </div>
+          {/* <!-- head_ti_whyeend --> */}
+          <div className="flex justify-evenly items-center w-[80vw] text-center">
+            {/* <!-- col --> */}
+            <div className="flex flex-1 justify-evenly items-center">
+              <div className="why_icon_div">
+                <img
+                  src="assets/images/support.png"
+                  alt=""
+                  className="img-fluid"
+                />
+
+                <div>24x7</div>
+                <b>Help</b>
+              </div>
+            </div>
+            {/* <!-- col end --> */}
+
+            {/* <!-- col --> */}
+            <div className="flex flex-1 justify-evenly items-center">
+              <div className="why_icon_div">
+                <img
+                  src="assets/images/verified.png"
+                  alt=""
+                  className="img-fluid"
+                />
+
+                <div>HimachalTourism.Info</div>
+                <b>Certified</b>
+              </div>
+            </div>
+            {/* <!-- col end --> */}
+
+            {/* <!-- col --> */}
+            <div className="flex flex-1 justify-evenly items-center">
+              <div className="why_icon_div">
+                <img
+                  src="assets/images/happy_travellers.png"
+                  alt=""
+                  className="img-fluid"
+                />
+
+                <div>33k+</div>
+                <b>Happy Customers</b>
+              </div>
+            </div>
+            {/* <!-- col end --> */}
+
+            {/* <!-- col --> */}
+            <div className="flex flex-1 justify-evenly items-center">
+              <div className="why_icon_div">
+                <img
+                  src="assets/images/quantity_control.png"
+                  alt=""
+                  className="img-fluid"
+                />
+                <div>Strict</div>
+                <b>Quality Control</b>
+              </div>
+            </div>
+            {/* <!-- col end --> */}
+
+            {/* <!-- col --> */}
+            <div className="flex flex-1 justify-evenly items-center">
+              <div className="why_icon_div">
+                <img
+                  src="assets/images/destinations.png"
+                  alt=""
+                  className="img-fluid"
+                />
+
+                <div>35+</div>
+                <b>Destinations</b>
+              </div>
+            </div>
+            {/* <!-- col end --> */}
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <CardSection titleData={titleDataTwo} cardData={customers} type={2} />
     </>
   );
 };

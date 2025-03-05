@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { setMobile } from "../redux/slices/baseSlice";
 
 export const sysThemeSelector = (): void => {
   // On page load or when changing themes
@@ -41,4 +42,26 @@ export const useScrollPosition = () => {
 // Joins classes
 export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");
+};
+
+// Checks for mobile devices
+export const setMobileMode = (dispatch: (arg0: { payload: any; type: "base/setMobile"; }) => void) => {
+
+  /* Storing user's device details in a variable*/
+  const details = navigator.userAgent;
+
+  /* Creating a regular expression  
+  containing some mobile devices keywords  
+  to search it in details string*/
+  const regexp = /android|iphone|kindle|ipad|iPod/i;
+
+  /* Using test() method to search regexp in details 
+  it returns boolean value*/
+  const isMobileDevice = regexp.test(details);
+
+  if (isMobileDevice) {
+    dispatch(setMobile(true));
+  } else {
+    dispatch(setMobile(false));
+  }
 };
